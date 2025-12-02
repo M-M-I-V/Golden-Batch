@@ -2,7 +2,7 @@ import React, { useState, useCallback } from 'react';
 
 // === API Configuration and Helpers ===
 
-const API_BASE_URL = 'http://localhost:5000/simulate';
+const API_BASE_URL = 'http://127.0.0.1:5000/predict';
 const MAX_RETRIES = 5;
 
 /**
@@ -11,9 +11,8 @@ const MAX_RETRIES = 5;
 const useSimulator = () => {
     // 1. Input State: Stores the values for the manufacturing parameters
     const [inputs, setInputs] = useState({
-        temperature: 150, // Default mid-range value
-        pressure: 5.0,    // Default mid-range value
-        speed: 1200,      // Default mid-range value
+        Temperature: 150, // Default mid-range value
+        Pressure: 5,    // Default mid-range value
     });
 
     // 2. UI/Process State
@@ -36,9 +35,8 @@ const useSimulator = () => {
         setError(null);
 
         const payload = {
-            temperature: inputs.temperature,
-            pressure: inputs.pressure,
-            speed: inputs.speed,
+            temperature: inputs.Temperature,
+            pressure: inputs.Pressure,
         };
 
         for (let attempt = 0; attempt < MAX_RETRIES; attempt++) {
@@ -139,7 +137,7 @@ export default function App() {
             statusText = 'Connection Error';
             statusColor = 'bg-red-700 border-red-500';
         } else if (prediction === 'Pass') {
-            statusText = 'GOLDEN BATCH (Pass)';
+            statusText = 'GOLDEN BATCH (Pass):';
             statusColor = 'bg-green-700 border-green-400';
         } else if (prediction === 'Fail') {
             statusText = 'BATCH FAILURE (Fail)';
@@ -190,7 +188,7 @@ export default function App() {
                         <SliderInput
                             label="Temperature"
                             name="temperature"
-                            value={inputs.temperature}
+                            value={inputs.Temperature}
                             min={100}
                             max={200}
                             step={1}
@@ -199,20 +197,11 @@ export default function App() {
                         <SliderInput
                             label="Pressure"
                             name="pressure"
-                            value={inputs.pressure}
-                            min={2.0}
-                            max={8.0}
-                            step={0.1}
+                            value={inputs.Pressure}
+                            min={10}
+                            max={50}
+                            step={1}
                             unit="bar"
-                        />
-                        <SliderInput
-                            label="Speed"
-                            name="speed"
-                            value={inputs.speed}
-                            min={500}
-                            max={2000}
-                            step={10}
-                            unit="RPM"
                         />
                     </div>
 
