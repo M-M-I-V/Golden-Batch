@@ -12,8 +12,7 @@ def predict():
     """ Sent data should be a JSON
     {
     "Temperature": 0,       -> int
-    "Pressure": 0.0,        -> float/double
-    "Speed": 0              -> int
+    "Pressure": 0,          -> int
     }
     """
 
