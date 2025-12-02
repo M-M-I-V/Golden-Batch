@@ -11,8 +11,8 @@ const MAX_RETRIES = 5;
 const useSimulator = () => {
     // 1. Input State: Stores the values for the manufacturing parameters
     const [inputs, setInputs] = useState({
-        Temperature: 150, // Default mid-range value
-        Pressure: 5,    // Default mid-range value
+        temperature: 150, // Default mid-range value
+        pressure: 5,    // Default mid-range value
     });
 
     // 2. UI/Process State
@@ -35,8 +35,8 @@ const useSimulator = () => {
         setError(null);
 
         const payload = {
-            temperature: inputs.Temperature,
-            pressure: inputs.Pressure,
+            temperature: inputs.temperature,
+            pressure: inputs.pressure,
         };
 
         for (let attempt = 0; attempt < MAX_RETRIES; attempt++) {
@@ -186,18 +186,18 @@ export default function App() {
                     {/* Input Sliders */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <SliderInput
-                            label="Temperature"
+                            label="temperature"
                             name="temperature"
-                            value={inputs.Temperature}
+                            value={inputs.temperature}
                             min={100}
                             max={200}
                             step={1}
                             unit="°C"
                         />
                         <SliderInput
-                            label="Pressure"
+                            label="pressure"
                             name="pressure"
-                            value={inputs.Pressure}
+                            value={inputs.pressure}
                             min={10}
                             max={50}
                             step={1}
