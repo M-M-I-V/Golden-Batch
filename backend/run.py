@@ -33,3 +33,6 @@ def predict():
         return jsonify({"prediction": "Pass"})
     else:
         return jsonify({"prediction": "Something went wrong!"})
+    
+if __name__ == "__main__":
+    app.run(debug=True)
