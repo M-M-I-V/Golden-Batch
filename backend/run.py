@@ -10,6 +10,14 @@ model_columns = joblib.load(str())
 
 @app.route("/predict", methods=["POST"])
 def predict():
+    """ Sent data should be a JSON
+    {
+    "Temperature": 0,       -> int
+    "Pressure": 0.0,        -> float/double
+    "Speed": 0              -> int
+    }
+    """
+
     data = request.json()
 
     if not data:
@@ -17,6 +25,11 @@ def predict():
     
     X_new = pandas.DataFrame([data])
 
+    predicted = model.predict(X_new)
 
-
-    return None
+    if predicted == 0:
+        return "Failed"
+    elif predicted == 1:
+        return "Passed"
+    else:
+        return "Something wrong."
