@@ -1,7 +1,5 @@
 # **🏭 Golden Batch Simulator: The Digital Twin**
 
-### **PMAX-EMAX Hackathon 2025 Entry**
-
 **"Predict failures before you even turn on the machine."**
 
 ## **💡 The Problem**
