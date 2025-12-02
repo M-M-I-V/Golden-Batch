@@ -28,8 +28,8 @@ def predict():
     print(predicted)
 
     if predicted == 0:
-        return "Failed"
+        return "Fail"
     elif predicted == 1:
-        return "Passed"
+        return "Pass"
     else:
         return "Something wrong."
